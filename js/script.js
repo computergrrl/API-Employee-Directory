@@ -62,9 +62,13 @@
    overlay.classList.remove("hidden");
    modalContainer.innerHTML = modalHTML;
 
+
+    /************* Code for Previous and Next Modal  **************/
+
     const prev = document.querySelector(".prev");
     const next = document.querySelector(".next");
 
+    
       next.addEventListener("click" , () => {
           let prevModal = index +=1;
           if (index < 12) {
@@ -80,7 +84,7 @@
      prev.addEventListener("click" , () => {
       let nextModal = index -= 1;  
       if (index > -1) {
-          displayModal(index -=1) 
+          displayModal(index) 
         } else {
           index = 11;
           displayModal(index);
