@@ -1,8 +1,10 @@
 
 body {
   background-color: rgb(251, 251, 251);
+  position: relative;
 }
-.main-grid {
+
+.grid-container {
   display: grid;
   width: 100%;
   grid-template-columns: repeat(3, auto);
@@ -10,12 +12,47 @@ body {
   grid-gap: 30px;
   justify-content: center;
   margin: 0 auto;
+  z-index: 0;
+}
+
+
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(100, 100, 100, 0.6);
+  z-index: 100;
+
 }
 
 .card img {
   border-radius: 50%;
   height: 90px;
 }
+
+.hidden {
+  display: none;
+}
+
+.modal {
+  width: 375px;
+  margin: 15% auto auto;
+  position: relative;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #778;
+  border-radius: 5px;
+  padding: 30px 20px;
+  }
+
+  .modal-close {
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    cursor: pointer;
+    }
 
 .card {
   align-self: center;
@@ -27,5 +64,26 @@ body {
   border: solid 2px rgb(211, 211, 211);
   border-radius: 1em;
   width: 325px;
+  z-index: 1;
   /* min-height: 200px; */
+}
+
+.prev {
+  position: absolute; 
+  bottom: 45%;
+  left: 5%;
+  border: 1px solid rgba(100, 100, 100, 0.4);
+  border-radius: .2em;
+  padding: 3px;
+  font-size: 1.3em;
+}
+
+.next {
+  position: absolute; 
+  bottom: 45%;
+  right: 5%;
+  border: 1px solid rgba(100, 100, 100, 0.4);
+  border-radius: .2em;
+  padding: 3px;
+  font-size: 1.3em;
 }
