@@ -1,5 +1,4 @@
- // const urlAPI = `https://randomuser.me/api/?results=12&inc=name, picture,
- // email, location, phone, dob &noinfo &nat=US`;
+ 
  let employees = [];
  const urlAPI = `https://randomuser.me/api/?results=12&nat=US`;
  const overlay = document.querySelector(".overlay");
@@ -20,10 +19,7 @@
    let employeeHTML = '';
    // loop through each employee and create HTML markup
    employees.forEach((employee, index) => {
-     // let name = employee.name;
-     // let email = employee.email;
-     // let city = employee.location.city;
-     // let picture = employee.picture;
+     
      employeeHTML += `
     <div class="card" data-index="${index}">
     <img class="avatar" src="${employee.picture.large}" />
@@ -39,7 +35,7 @@
  }
 
  function displayModal(index) {
-   // use object destructuring make our template literal cleaner
+  
    let { name, dob, phone, email, location, picture } = employees[index];
 
    let date = new Date(dob.date);
@@ -68,7 +64,7 @@
     const prev = document.querySelector(".prev");
     const next = document.querySelector(".next");
 
-    
+
       next.addEventListener("click" , () => {
           let prevModal = index +=1;
           if (index < 12) {
@@ -93,7 +89,7 @@
       });
  }
 
-
+/*********** Add Event Listener to Grid for Modal Popup  ***********/
  gridContainer.addEventListener('click', e => {
   // make sure the click is not on the gridContainer itself
   if (e.target !== gridContainer) {
@@ -109,16 +105,32 @@
      overlay.classList.add("hidden");
   });
 
-  
-function getNext(index) {
-  
-  
-}
 
-function getPrevious (index) {
-  
-  
-}
- 
-  
+  /**************** SEARCH FUNCTION ********************/
 
+const search = document.querySelector('#search');
+
+const handleSearch = (e) => {
+  
+  const cards = document.querySelectorAll('.card .name');
+  const searchTerm = e.target.value.toLowerCase();
+
+    // for (card of cards){
+    //   console.log(card.textContent);
+    // }
+  
+    cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    const box = card.parentElement.parentElement;
+    
+   // if(text.indexOf(searchTerm) > -1) {
+    if(text.includes(searchTerm)) {
+      box.style.display = "flex";
+    } else {
+      box.style.display = "none";  
+    }
+   });
+
+ }
+
+search.addEventListener('keyup', handleSearch);
