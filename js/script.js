@@ -115,15 +115,12 @@ const handleSearch = (e) => {
   const cards = document.querySelectorAll('.card .name');
   const searchTerm = e.target.value.toLowerCase();
 
-    // for (card of cards){
-    //   console.log(card.textContent);
-    // }
   
     cards.forEach(card => {
     const text = card.textContent.toLowerCase();
     const box = card.parentElement.parentElement;
     
-   // if(text.indexOf(searchTerm) > -1) {
+   
     if(text.includes(searchTerm)) {
       box.style.display = "flex";
     } else {
