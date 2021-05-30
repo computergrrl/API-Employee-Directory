@@ -52,58 +52,17 @@
         <p>Birthday:
         ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
       </div>
-      <p class="prev"> < </p>
-      <p class="next"> > </p>`;
+      <button class="prev" onclick="prevModal(${index})"> < </button>
+      <button class="next" onclick="nextModal(${index})"> > </button>`;
+      
+
+     
 
    overlay.classList.remove("hidden");
    modalContainer.innerHTML = modalHTML;
 
-
-    /************* Code for Previous and Next Modal  **************/
-
-    const prev = document.querySelector(".prev");
-    const next = document.querySelector(".next");
-
-
-      next.addEventListener("click" , () => {
-          let prevModal = index +=1;
-          if (index < 12) {
-            displayModal(index ) 
-          } else {
-            index = 0;
-            console.log(index)
-            displayModal(index);
-            
-          }
-      });
-
-     prev.addEventListener("click" , () => {
-      let nextModal = index -= 1;  
-      if (index > -1) {
-          displayModal(index) 
-        } else {
-          index = 11;
-          displayModal(index);
-          
-        }
-      });
  }
 
-/*********** Add Event Listener to Grid for Modal Popup  ***********/
- gridContainer.addEventListener('click', e => {
-  // make sure the click is not on the gridContainer itself
-  if (e.target !== gridContainer) {
-  /* select the card element based on its proximity to actual element
-  clicked*/
-  const card = e.target.closest(".card");
-  const index = card.getAttribute('data-index');
-  displayModal(index);
-  }
-  });
-
-  modalClose.addEventListener("click", () => {
-     overlay.classList.add("hidden");
-  });
 
 
   /**************** SEARCH FUNCTION ********************/
@@ -131,3 +90,45 @@ const handleSearch = (e) => {
  }
 
 search.addEventListener('keyup', handleSearch);
+
+/************* Functions for Previous and Next Modal  **************/
+
+
+function prevModal(index) {
+  index -=1;
+  if (index > -1) {
+    displayModal(index ) 
+  } else {
+    displayModal(11);
+    }
+}
+
+function nextModal(index) {
+     index +=1;
+  if (index < 12) {
+    displayModal(index ) 
+  } else {
+    displayModal(0);
+    }
+
+}
+
+
+
+
+/*********** Add Event Listener to Grid for Modal Popup  ***********/
+ gridContainer.addEventListener('click', e => {
+  // make sure the click is not on the gridContainer itself
+  if (e.target !== gridContainer) {
+  /* select the card element based on its proximity to actual element
+  clicked*/
+  const card = e.target.closest(".card");
+  const index = card.getAttribute('data-index');
+  displayModal(index);
+  }
+  });
+
+  modalClose.addEventListener("click", () => {
+     overlay.classList.add("hidden");
+  });
+
