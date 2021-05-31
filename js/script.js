@@ -39,6 +39,8 @@
    let { name, dob, phone, email, location, picture } = employees[index];
 
    let date = new Date(dob.date);
+   let month = date.getMonth()+1;
+   month < 10 ? month = '0' + month: month = month;
 
    const modalHTML = `
         <img class="avatar" src="${picture.large}" />
