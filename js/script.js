@@ -52,7 +52,7 @@
         <p>${phone}</p>
         <p class="address">${location.street.number} ${location.street.name} ${location.city}, ${location.state} ${location.postcode}</p>
         <p>Birthday:
-        ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
+        ${month}/${date.getDate()}/${date.getFullYear()}</p>
       </div>
       <button class="prev" onclick="prevModal(${index})"> < </button>
       <button class="next" onclick="nextModal(${index})"> > </button>`;
