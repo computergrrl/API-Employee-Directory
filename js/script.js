@@ -9,8 +9,10 @@
  fetch(urlAPI)
    .then(res => res.json())
    .then(res => res.results)
+   .then(data => res.results)
+   //console.log(data);
    .then(displayEmployees)
-   .catch(err => console.log(err))
+  .catch(err => console.log(err));
 
 
  function displayEmployees(employeeData) {
