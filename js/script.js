@@ -1,6 +1,6 @@
  
  let employees = [];
- const urlAPI = `https://randomuser.me/api/?results=12&nat=US`;
+ const urlAPI = `https://randomuser.me/api/?results=60&nat=US`;
  const overlay = document.querySelector(".overlay");
  const gridContainer = document.querySelector(".grid-container");
  const modalContainer = document.querySelector(".modal-content");
@@ -9,7 +9,7 @@
  fetch(urlAPI)
    .then(res => res.json())
    .then(res => res.results)
-   .then(data => res.results)
+   //.then(data => res.results)
    //console.log(data);
    .then(displayEmployees)
   .catch(err => console.log(err));
@@ -103,13 +103,13 @@ function prevModal(index) {
   if (index > -1) {
     displayModal(index ) 
   } else {
-    displayModal(11);
+    displayModal(employees.length -1);
     }
 }
 
 function nextModal(index) {
      index +=1;
-  if (index < 12) {
+  if (index < employees.length) {
     displayModal(index ) 
   } else {
     displayModal(0);
@@ -127,6 +127,7 @@ function nextModal(index) {
   /* select the card element based on its proximity to actual element
   clicked*/
   const card = e.target.closest(".card");
+  console.log(card);
   const index = card.getAttribute('data-index');
   displayModal(index);
   }
